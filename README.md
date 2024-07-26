@@ -54,7 +54,7 @@ The top-level Makefile contains a target for creating the SD card:
 ### Preparing the TFTP server for TFTP booting
 There is a convenience script in the software stack for launching a TFTP server:
 ```bash
-    cd software/include/cva6-SDK
+    cd software/include/cva6-sdk/scripts
     sudo INTERFACE=ethXXX ./start-tftp.sh
 ```
 
@@ -64,6 +64,7 @@ The top-level make file contains a target for programming the FPGA via JTAG:
     make program-device
 ```
 This assumes proper installation of Vivado drivers; see the Vivado installation manual.
+Make sure the SD card is inserted **before attempting to program**.
 
 ### Connecting to the Console and Booting
 You can use your favorite console emulator, e.g., picocom, to connect to the board:
@@ -74,7 +75,7 @@ You can use your favorite console emulator, e.g., picocom, to connect to the boa
 If you do not do anything, the board will do a TFTP boot assuming you have started the TFTP server.
 Abort the boot via TFTP by pressing any button during the u-boot countdown and use the following u-boot command to boot Linux from the SD card instead:
 ```bash
-    mmc info; fatload mmc 0:2 90000000 uImage; setenv fdt_high xffffffffffffffff; bootm 90000000 - $(fdtcontroladdr)
+    mmc info; fatload mmc 0:2 90000000 uImage; setenv fdt_high 0xffffffffffffffff; bootm 90000000 - $(fdtcontroladdr)
 ```
 
 After boot is complete, use the convenience script to log into the FPGA via TFTP:
