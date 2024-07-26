@@ -1,0 +1,9 @@
+[submodule "hardware/include/cva6"]
+	path = hardware/include/cva6
+	url = git@github.com:WorldofJARcraft/cva6.git
+[submodule "hardware/include/analogdevices-hdl-lib"]
+	path = hardware/include/analogdevices-hdl-lib
+	url = git@github.com:WorldofJARcraft/hdl.git
+[submodule "software/include/cva6-sdk"]
+	path = software/include/cva6-sdk
+	url = git@github.com:WorldofJARcraft/cva6-sdk.git
